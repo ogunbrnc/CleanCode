@@ -177,6 +177,87 @@ Apart from this, in some cases it is wrong to use a comment line.
 
 * Short and well-named functions will often not need any comment headers.
 
+#Chapter 5: Formatting
+In order for people reading the code to be able to read it comfortably, it must be well formatted. If we are working individually, we must determine and apply our own rules; if we are working with a team, we must determine and apply certain formats that everyone in the team will follow.
+
+Let's think about article writing, there will be a title at the top and it gives us an idea about the article. Afterwards, the events are mentioned in the first paragraph without going into details, and we learn these details as we continue to read. Code writing should be like this, naming should give an idea about the code. The top of the code should give information about the algorithms and the details should be learned as you go to the lower functions.
+
+If there is a different concept in a part of the code, we can make it more readable by separating it with vertical space. For example, after imports, after variable declarations are finished, or after each function declaration.
+
+Related concepts should be kept close to each other vertically, otherwise it may be difficult to search within the file.
+
+* It is necessary to define variables close to where they are used. Also, control variables defined for the loop must be defined inside the loop.
+
+* Instance variables must be defined at the top of the class.
+
+* If one function calls another, that is, if it is a dependent function, they must be defined close to each other.
+
+* Functions that are conceptually close should be close to each other. This conceptual affinity may be direct, such as the dependency of functions or the use of variables by a function, or it may be due to the fact that it only performs similar operations.
+
+* In dependent functions, the called function must be just below the calling function.
+
+Codes should not be too long horizontally, the reader should never shift the line to the right.
+
+We can use horizontal white space to relate things that are strongly related and separate things that are weaker.
+
+We can also use white space to indicate the precedence of operators.
+
+Source codes have a hierarchy. This hierarchy continues in the form of a class in a file, functions in a class, and code blocks in functions. Indents are required to make this hierarchy easier to read. Each element of the hierarchy is aligned from top to bottom, one indent to the right. Programmers also rely on it to read the code.
+
+In very short functions, loops, or conditional structures, indentation is often ignored. No matter how short, we have to be careful.
+
+Also, in for and while loops, there may be cases where the body part is dummy. In this case, the dummy body must also be properly indented.
+
+If we are working with a team, all these formatting rules should be determined together and the same structure should be used for consistency.
+#Chapter 6: Objects and Data Structures
+Hiding Implementation is not just putting a layer between functions and variables. Hiding Implementation is actually an abstraction. It exposes abstract interfaces that allow users to manipulate data without knowing the implementation.
+
+Objects hide data behind abstraction and provide functions to manipulate data. Data structure expose their data and have no meaningful functions. They are virtual opposites.
+
+Procedural code uses data structures and makes it easy to add new functionality without changing existing data structures. Object Oriented code makes it easy to add new classes without changing existing functions. So what is difficult for one is easy for another.
+
+There is a well-known heuristic called the Law of Demeter that says a module should not know about the innards of the objects it manipulates.
+
+Violating the Law of Demeter will be far less confusing if data structures have global variables and no functions, and objects have private variables and public functions. This confusion sometimes leads to unfortunate hybrid structures that are half object and half data structure. But this is worst because makes it hard to add new function and also make it hard to add new data structures.
+
+The concise form of a data structure is a class with public variables and no functions. This is also called a data transfer object, it is especially used in communication with the database. They take part in transforming the raw data in the database into objects in the application code.
+
+If we want flexibility in adding new data types, we should prefer objects. If we want flexibility in adding new behaviors, we should prefer data structures and procedures. A good software developer should be able to determine his needs well and make a good choice.
+#Chapter 7: Error Handling
+While the program is running, things can go bad for various reasons, we are responsible for all of this and we should handle it.
+
+In previous years, when there were no exceptions, when there was a problem, error codes were returned and then immediately checked. However, this control could easily be forgotten. So now we use exceptions instead of returning error code. Also, thanks to error handling, error catching codes and actual working algorithm codes are separated from each other.
+
+Each exception you throw should provide enough information to identify the source and location of an error. Create informative error messages where you will mention the failed operation and the type of error and pass them along with your exceptions.
+
+By wrapping the API we use with our own generated error class, we can make sure it returns a common exception type and significantly simplify our code.
+
+If we are using a third party API, we will have minimized the dependency when we wrap the API. If we start using another library in the future, we will be able to switch with minimal workload. It also makes testing the code easier to emulate Third Party calls, ie testing. The final advantage is that we don't have to be tied to a particular API design, we can work however we feel.
+
+We can create a class to handle exceptions that may occur in the code. This is called SPECIAL CASE PATTERN, in which case it is not necessary to deal with exceptional behavior.
+
+If you want to return NULL from a method, try throwing an exception or returning a SPECIAL CASE object instead. If you are calling a nullable method from a third party API, wrap it with the method that will throw an exception.
+
+As bad as returning NULL from a method is, much worse is passing a NULL value into a method.
+
+In most programming languages, there is no way to deal with an accidentally passed NULL value. The rational approach is to forbid passing NULL by default. When we do this, we can understand that a NULL value is an indication of a problem.
+
+Clean code should also be robust. Therefore, if we see error handling as one of the things we need to do, we can write robust and maintainable codes.
+
+#Chapter 8: Boundaries
+While developing software, we can sometimes purchase third-party software or use open source software. This software will have a very wide range of uses offered to us. In order to make the code more readable and less misused, it would be more accurate to use it in a class we wrote, rather than using the result returned directly from the Public API.
+
+Third-party API is hard to learn, harder to integrate, much harder to do both together. Instead of trying them in production, we can write tests to better explore third-party code.
+
+Testing is important not only for this, but also for sustainability. In this way, we can also measure whether an improvement or a change in the third-party API affects our own system.
+
+Change is something that happens all the time, and good software designs can keep up with change without much effort or investment. When we use Third-Party software, we must carefully determine whether we can keep up with the development. Therefore, rather than relying on something we cannot control; It's better to rely on something we can control.
+
+
+
+
+
+
 
 
 
