@@ -177,7 +177,7 @@ Apart from this, in some cases it is wrong to use a comment line.
 
 * Short and well-named functions will often not need any comment headers.
 
-#Chapter 5: Formatting
+# Chapter 5: Formatting
 In order for people reading the code to be able to read it comfortably, it must be well formatted. If we are working individually, we must determine and apply our own rules; if we are working with a team, we must determine and apply certain formats that everyone in the team will follow.
 
 Let's think about article writing, there will be a title at the top and it gives us an idea about the article. Afterwards, the events are mentioned in the first paragraph without going into details, and we learn these details as we continue to read. Code writing should be like this, naming should give an idea about the code. The top of the code should give information about the algorithms and the details should be learned as you go to the lower functions.
@@ -209,7 +209,7 @@ In very short functions, loops, or conditional structures, indentation is often 
 Also, in for and while loops, there may be cases where the body part is dummy. In this case, the dummy body must also be properly indented.
 
 If we are working with a team, all these formatting rules should be determined together and the same structure should be used for consistency.
-#Chapter 6: Objects and Data Structures
+# Chapter 6: Objects and Data Structures
 Hiding Implementation is not just putting a layer between functions and variables. Hiding Implementation is actually an abstraction. It exposes abstract interfaces that allow users to manipulate data without knowing the implementation.
 
 Objects hide data behind abstraction and provide functions to manipulate data. Data structure expose their data and have no meaningful functions. They are virtual opposites.
@@ -223,7 +223,7 @@ Violating the Law of Demeter will be far less confusing if data structures have 
 The concise form of a data structure is a class with public variables and no functions. This is also called a data transfer object, it is especially used in communication with the database. They take part in transforming the raw data in the database into objects in the application code.
 
 If we want flexibility in adding new data types, we should prefer objects. If we want flexibility in adding new behaviors, we should prefer data structures and procedures. A good software developer should be able to determine his needs well and make a good choice.
-#Chapter 7: Error Handling
+# Chapter 7: Error Handling
 While the program is running, things can go bad for various reasons, we are responsible for all of this and we should handle it.
 
 In previous years, when there were no exceptions, when there was a problem, error codes were returned and then immediately checked. However, this control could easily be forgotten. So now we use exceptions instead of returning error code. Also, thanks to error handling, error catching codes and actual working algorithm codes are separated from each other.
@@ -244,7 +244,7 @@ In most programming languages, there is no way to deal with an accidentally pass
 
 Clean code should also be robust. Therefore, if we see error handling as one of the things we need to do, we can write robust and maintainable codes.
 
-#Chapter 8: Boundaries
+# Chapter 8: Boundaries
 While developing software, we can sometimes purchase third-party software or use open source software. This software will have a very wide range of uses offered to us. In order to make the code more readable and less misused, it would be more accurate to use it in a class we wrote, rather than using the result returned directly from the Public API.
 
 Third-party API is hard to learn, harder to integrate, much harder to do both together. Instead of trying them in production, we can write tests to better explore third-party code.
