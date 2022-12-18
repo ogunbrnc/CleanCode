@@ -253,18 +253,255 @@ Testing is important not only for this, but also for sustainability. In this way
 
 Change is something that happens all the time, and good software designs can keep up with change without much effort or investment. When we use Third-Party software, we must carefully determine whether we can keep up with the development. Therefore, rather than relying on something we cannot control; It's better to rely on something we can control.
 
+# Chapter 9: Unit Tests
+
+* You can not write production code until you write a failed unit test.
+
+* You can not write more unit tests than are enough to fail and the build will fail.
+
+* You can not write more production code than is sufficient to pass currently failing tests.
+
+As in production codes, we should pay attention to cleanliness in test codes. Readability is very important.
+
+It is recommended to use only one assert per test, this will increase the readability of the test.
+
+The principles we learned earlier apply here as well, each test function should be purposeful.
+
+* Fast Test should be fast.
+
+* Independient Test should not depend on other functions.
+
+* Repeatable Test should be repeatable in any environment.
+
+* Self-Validating Test should return boolean output which indicate either pass or fail. 
+
+* Timely Unit tests should be written just before production code. If you write after production code, you may find it difficult to test production code.
+
+# Chapter 10: Classes
+
+In some cases we may need to protect a variable or function that needs to be accessed by test
+
+The rules we learned in functions apply here as well, classes must be small.
+
+Classes should have only one responsibility. So classes should have few instance variables. And each of a class's methods must manipulate one or more of these variables.
+
+In general, the more variables a function handles, the more class-appropriate it is.
+
+In previous chapters, we mentioned that change is very rapid. Even a small change can cause the rest of the system to not work properly. If we want to design a clean system, we need to reduce the risk of changes to our classes.
+
+# Chapter 11: Systems
+
+When developing systems, when objects are created and dependencies are provided, it should separate the initialization time from the runtime logic that takes over after initialization.
+
+One way to do this is to move all modules to main modules or modules called by the main module. Then the rest is to design the entire system assuming all objects are properly constructed and dependencies are provided.
+
+A powerful mechanism used to separate the structure from use;  Dependency Injection (DI), which is the application of Inversion of Control (IoC) to dependency management.
+
+The reversal of control moves secondary responsibilities from one object to other dedicated objects and thus supports the Single Responsibility Principle. In the context of dependency management, an object should not take responsibility for starting dependencies itself. Instead, it should reverse control by transferring that responsibility to another "authorized" mechanism.
+
+# Chapter 12: Emergence
+
+According to Kent Beck, a design is "simple" if it follows these rules
+
+* Run tests
+
+* Prevent conflicts
+
+* Indicates the purpose of the person who wrote the code.
+
+* Minimizes the number of methods and classes.
+
+# Chapter 13: Concurrency
+
+Concurrence is a decoupling strategy. 
+
+In single-threaded applications, what to do when is so well determined that the state of the entire application can often be determined by looking at the stackbacktrace.
+
+In this case, the programmer can get information about the state of the system by setting breakpoints.
+
+Thus, the application looks more like many small computers collaborating with each other than a single large program. This makes the system easier to understand.
+
+* Concurrency improves performance when work is done to be shared across multiple threads or multiple processors. Of course there will be additional code loads that this brings.
+ 
+* While designing, we must determine what should be parsed from when.
+
+* Even if we design a very simple concurrency, it is complex.
+
+* If we want to achieve synchronicity, it is necessary to completely change our current design.
+
+# Chapter 14: 
+
+Just running the code is not enough.
+
+Working code is badly corrupted unless precautions are taken.
+
+When developing projects, there is nothing that can affect the project more than bad code. Because bad programs can be rebuilt, bad requirements can be redefined, but bad code rots and becomes inoperable over time.
+
+Bad code can be cleaned up, but the cost increases as time goes on. As the code decays, the modules intertwine and create a complex environment. So the solution here is to constantly keep the code clean and organized.
+
+# Chapter 15:
+
+No module is exempt from improvement, every module can be made better.
+
+Our responsibility as programmers is to make code better than we found it.
+
+# Chapter 16:
+
+We say the same thing again, we have to make the code better than when we checked out. This may take time, but it will return to us much more in the future.
+
+We can increase test coverage, handle bugs, subdivide code and avoid code duplication.
+
+A later viewer of the code will find it easier to understand, and it will probably make the code even better.
+
+# Chapter 17:
+## Comments
+
+* C1: Inappropriate Information: Comments should be reserved for technical notes about the code and design.
+
+* C2: Obsolete Comment:  If you find an obsolete comment, it is best to update it or get rid of it as quickly as possible.
+
+* C3: Redundant Comment: Comments should say things that the code cannot say for itself.
+
+* C4: Poorly Written Comment: Choose your words carefully.
+
+* C5: Commented-Out Code: When you see commented-out code, delete it! 
 
 
+## Environment
 
+* E1: Build Requires More Than One Step: You should be able to check out the system with one simple command and then issue one other simple command to build it.
 
+* E2: Tests Require More Than One Step: You should be able to run all the unit tests with just one command. 
 
+## Functions
 
+* F1: Too Many Arguments: Functions should have a small number of arguments. 
 
+* F2: Output Arguments:  If your function must change the state of something, have it change the state of the object it is called on. 
 
+* F3: Flag Arguments: Boolean arguments loudly declare that the function does more than one thing, they are confusing and should be eliminated.
 
+* F4: Dead Function: Methods that are never called should be discarded. 
 
+## General
 
+* G1: Multiple Languages in One Source File: The ideal is for a source file to contain one, and only one, language. 
 
+* G2: Obvious Behavior Is Unimplemented: When an obvious behavior is not implemented, readers of the code can no longer depend on their intuition about function names. 
 
+* G3: Incorrect Behavior at the Boundaries: Don’t rely on your intuition. Look for every boundary condition and write a test for it.
+
+* G4: Overridden Safeties: It is risky to override safeties. 
+
+* G5: Duplication: Every time you see duplication in the code, it represents a missed opportunity for abstraction.
+
+* G6: Code at Wrong Level of Abstraction: It is important to create abstractions that separate higher level general concepts from lower level detailed concepts.
+
+* G7: Base Classes Depending on Their Derivatives: When we see base classes mentioning the names of their deriva- tives, we suspect a problem.
+
+* G8: Too Much Information: Well-defined modules have very small interfaces that allow you to do a lot with a little.
+
+* G9: Dead Code: The problem with dead code is that after awhile it starts to smell. 
+
+* G10: Vertical Separation: Variables and function should be defined close to where they are used. 
+
+* G11: Inconsistency: If you do something a certain way, do all similar things in the same way. 
+
+* G12: Clutter: All these things are clutter and should be removed. Keep your source files clean, well organized, and free of clutter.
+
+* G13: Artificial Coupling: Things that don’t depend upon each other should not be artificially coupled.
+
+* G14: Feature Envy: When a method uses accessors and mutators of some other object to manipulate the data within that object, then it envies the scope of the class of that other object. 
+
+* G15: Selector Arguments: Selector arguments are just a lazy way to avoid splitting a large function into several smaller functions.
+
+* G16: Obscured Intent: We want code to be as expressive as possible. 
+
+* G17: Misplaced Responsibility
+
+* G18: Inappropriate Static: In general you should prefer nonstatic methods to static methods. 
+
+* G19: Use Explanatory Variables: The simple use of explanatory variables makes it clear that the first matched group is the key, and the second matched group is the value.
+
+* G20: Function Names Should Say What They Do: If you have to look at the documentation of the function to know what it does, then you should work to find a better name so that it can be placed in functions with better names.
+
+* G21: Understand the Algorithm: Before you consider yourself to be done with a function, make sure you understand how it works.
+
+* G22: Make Logical Dependencies Physical: If one module depends upon another, that dependency should be physical, not just logical.
+
+* G23: Prefer Polymorphism to If/Else or Switch/Case: 
+
+* G24: Follow Standard Conventions: Every team should follow a coding standard. This coding standard should specify things like where to declare instance variables; how to name classes, methods, and variables; where to put braces; and so on. 
+
+* G25: Replace Magic Numbers with Named Constants: 
+
+* G26: Be Precise: When you make a decision in your code, make sure you make it precisely. 
+
+* G27: Structure over Convention: Enforce design decisions with structure over convention. 
+
+* G28: Encapsulate Conditionals: 
+
+* G29: Avoid Negative Conditionals: Negatives are just a bit harder to understand than positives. 
+
+* G30: Functions Should Do One Thing: Functions which do more than one thing,  should be converted into many smaller functions.
+
+* G31: Hidden Temporal Couplings: Temporal couplings are often necessary, but you should not hide the coupling. 
+
+* G32: Don’t Be Arbitrary: If a structure appears arbitrary, others will feel empowered to change it.
+
+* G33: Encapsulate Boundary Conditions: Boundary conditions are hard to keep track of. Put the processing for them in one place. Don’t let them leak all over the code.
+
+* G34: Functions Should Descend Only One Level of Abstraction: The statements within a function should all be written at the same level of abstraction.
+
+* G35: Keep Configurable Data at High Levels: If you have a constant such as configuration value that is known and expected at a high level of abstraction, do not bury it in a low-level function
+
+* G36: Avoid Transitive Navigation: In general we don’t want a single module to know much about its collaborators. 
+
+## Java
+
+* J1: Avoid Long Import Lists by Using Wildcards: 
+
+* J2: Don’t Inherit Constants:  Don’t use inheritance as a way to cheat the scoping rules of the language. Use a static import instead.
+
+* J3: Constants versus Enums
+
+## Names
+
+* N1: Choose Descriptive Names: Make sure the name is descriptive.
+
+* N2: Choose Names at the Appropriate Level of Abstraction: Choose names the reflect the level of abstraction of the class or function you are working in.
+
+* N3: Use Standard Nomenclature Where Possible: Names are easier to understand if they are based on existing convention or usage. 
+
+* N4: Unambiguous Names:  Choose names that make the workings of a function or variable unambiguous.
+
+* N5: Use Long Names for Long Scopes: The length of a name should be related to the length of the scope. You can use very short
+variable names for tiny scopes, but for big scopes you should use longer names.
+
+* N6: Avoid Encodings: Names should not be encoded with type or scope information. 
+
+* N7: Names Should Describe Side-Effects: Names should describe everything that a function, variable, or class is or does. Don’t hide side effects with a name. 
+
+## Tests
+
+* T1: Insufficient Tests: A test suite should test everything that could possibly break.
+
+* T2: Use a Coverage Tool!: Coverage tools reports gaps in your testing strategy. They make it easy to find modules, classes, and functions that are insufficiently tested. 
+
+* T3: Don’t Skip Trivial Tests: They are easy to write and their documentary value is higher than the cost to produce
+them.
+
+* T4: An Ignored Test Is a Question about an Ambiguity: Which you choose depends upon whether the ambiguity is about something that would compile or not
+
+* T5: Test Boundary Conditions: Take special care to test boundary conditions.
+
+* T6: Exhaustively Test Near Bugs: When you find a bug in a function, it is wise to do an exhaustive test of that function.
+
+* T7: Patterns of Failure Are Revealing: 
+
+* T8: Test Coverage Patterns Can Be Revealing: Looking at the code that is or is not executed by the passing tests gives clues to why the
+failing tests fail.
+
+* T9: Tests Should Be Fast: A slow test is a test that won’t get run. 
 
 
