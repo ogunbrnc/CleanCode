@@ -329,7 +329,7 @@ Thus, the application looks more like many small computers collaborating with ea
 
 * If we want to achieve synchronicity, it is necessary to completely change our current design.
 
-# Chapter 14: 
+# Chapter 14: Successive Refinement
 
 Just running the code is not enough.
 
@@ -339,13 +339,13 @@ When developing projects, there is nothing that can affect the project more than
 
 Bad code can be cleaned up, but the cost increases as time goes on. As the code decays, the modules intertwine and create a complex environment. So the solution here is to constantly keep the code clean and organized.
 
-# Chapter 15:
+# Chapter 15: jUnit Internals
 
 No module is exempt from improvement, every module can be made better.
 
 Our responsibility as programmers is to make code better than we found it.
 
-# Chapter 16:
+# Chapter 16: Refactoring SerialDate
 
 We say the same thing again, we have to make the code better than when we checked out. This may take time, but it will return to us much more in the future.
 
@@ -353,7 +353,7 @@ We can increase test coverage, handle bugs, subdivide code and avoid code duplic
 
 A later viewer of the code will find it easier to understand, and it will probably make the code even better.
 
-# Chapter 17:
+# Chapter 17: Smells and Heuristics
 ## Comments
 
 * C1: Inappropriate Information: Comments should be reserved for technical notes about the code and design.
