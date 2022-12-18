@@ -457,7 +457,7 @@ A later viewer of the code will find it easier to understand, and it will probab
 
 * G36: Avoid Transitive Navigation: In general we don’t want a single module to know much about its collaborators. 
 
-## Java
+## Java
 
 * J1: Avoid Long Import Lists by Using Wildcards: 
 
